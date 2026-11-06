@@ -104,8 +104,13 @@ const summary = (await admin.req("GET", "/admin/reports/summary?shopCode=30051")
 check("admin summary filtered by shop returns data + Vietnamese labels", summary?.totalSessions >= 1 && summary.topFactors.every((f) => !/^[A-Z_]+$/.test(f.label)));
 const list = await admin.req("GET", "/admin/reports/sessions?page=1&pageSize=5");
 check("admin session list paginated", list.status === 200 && list.json.data.length === 5 && list.json.total >= 1);
-const csv = await admin.req("GET", "/admin/reports/export.csv");
-check("CSV export is UTF-8 text without the test phone number", csv.status === 200 && csv.text.includes("Mã ST") && !csv.text.includes(phone));
+const csv = await admin.req("GET", "/admin/reports/export.csv?shopCode=30051");
+check("CSV export is UTF-8 text with the respondent's name + full phone (admin-only)", csv.status === 200 && csv.text.includes("Mã ST") && csv.text.includes(`=""${phone}""`) && csv.text.includes("Smoke Test"));
+const mine = (await admin.req("GET", "/admin/reports/sessions?shopCode=30051&page=1&pageSize=100")).json.data.find((r) => r.id === sid);
+check("admin list shows the FULL phone number (decrypted), not masked", mine?.phone === phone && mine?.phoneLast4 === phone.slice(-4));
+const detailRes = await admin.req("GET", `/admin/reports/sessions/${sid}`);
+check("admin detail shows the full phone number", detailRes.json?.phone === phone);
+check("non-admin cannot read the phone via session list/detail/CSV", (await manager.req("GET", `/admin/reports/sessions/${sid}`)).status === 403 && (await manager.req("GET", "/admin/reports/export.csv")).status === 403);
 const q3 = (await admin.req("GET", "/questions")).json.data.find((q) => q.questionKey === "Q3");
 check("Q3 with wrong fixed option set -> 400", (await admin.req("POST", "/questions/Q3/versions", { labelText: q3.labelText, options: [{ optionKey: "PRICE", labelText: "x" }] })).status === 400);
 check("question edit without CSRF header -> 403", (await admin.req("POST", "/questions/Q4A/versions", { labelText: "x", options: [{ labelText: "a" }] }, { csrf: false })).status === 403);

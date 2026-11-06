@@ -14,6 +14,7 @@ interface SessionRow {
   qltpName: string;
   respondentName: string | null;
   phoneLast4: string | null;
+  phone: string | null;
   giftName: string | null;
   buyOutside: string[];
   wantImprovement: string[];
@@ -33,6 +34,9 @@ interface SessionDetail extends SessionRow {
 }
 
 const PAGE_SIZE = 20;
+/** 0912345678 -> 0912 345 678 (older respondents saved before full numbers were kept show only the last 4 digits). */
+const fmtPhone = (r: { phone: string | null; phoneLast4: string | null }) =>
+  r.phone ? r.phone.replace(/^(\d{4})(\d{3})(\d{3})$/, "$1 $2 $3") : r.phoneLast4 ? `****${r.phoneLast4}` : "—";
 const fmt = (iso: string) => new Date(iso).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
 
 function DetailModal({ id, onClose }: { id: string; onClose: () => void }) {
@@ -65,8 +69,10 @@ function DetailModal({ id, onClose }: { id: string; onClose: () => void }) {
                 {detail.isDuplicate ? " · Trùng" : ""}
               </p>
               {detail.respondentName && (
-                <p className="text-gray-500">
-                  Khách: {detail.respondentName} (SĐT ****{detail.phoneLast4})
+                <p className="mt-1">
+                  Khách: <strong>{detail.respondentName}</strong>
+                  <br />
+                  SĐT: <strong className="text-base tracking-wide">{fmtPhone(detail)}</strong>
                 </p>
               )}
               <p className="mt-1">
@@ -139,7 +145,7 @@ export function AdminSessionsPage() {
         }}
       />
 
-      <p className="text-xs text-gray-400">Danh sách này có tên khách và 4 số cuối SĐT; mỗi lần xem đều được ghi nhật ký truy cập. File CSV không chứa thông tin cá nhân.</p>
+      <p className="text-xs text-gray-400">Danh sách và file CSV có họ tên + số điện thoại đầy đủ của khách (để gửi quà); mỗi lần xem/xuất đều được ghi nhật ký truy cập. Chỉ ADMIN xem được.</p>
 
       <div className="bg-white rounded-xl border overflow-x-auto">
         <table className="w-full text-sm">
@@ -171,7 +177,17 @@ export function AdminSessionsPage() {
                 </td>
                 <td className="py-2 px-3 whitespace-nowrap">{r.qltpName}</td>
                 <td className="py-2 px-3">{r.source === "QR" ? "QR" : "Nhân viên"}</td>
-                <td className="py-2 px-3 whitespace-nowrap">{r.respondentName ? `${r.respondentName} ****${r.phoneLast4}` : "—"}</td>
+                <td className="py-2 px-3 whitespace-nowrap">
+                  {r.respondentName ? (
+                    <>
+                      {r.respondentName}
+                      <br />
+                      <span className="font-medium text-bhx-greenDark">{fmtPhone(r)}</span>
+                    </>
+                  ) : (
+                    "—"
+                  )}
+                </td>
                 <td className="py-2 px-3 whitespace-nowrap">
                   {r.statusLabel}
                   {r.isDuplicate && <span className="ml-1 text-xs text-orange-600">(trùng)</span>}

@@ -4,7 +4,7 @@ import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { asyncHandler, AppError } from "../middleware/errorHandler";
 import { getSurveyConfigBundle, saveSurveyAnswers, completeSurveySession, checkDuplicateRespondent } from "../services/survey";
-import { normalizeVnPhone, hashPhone, last4 } from "../lib/phone";
+import { normalizeVnPhone, hashPhone, last4, encryptPhone } from "../lib/phone";
 import { surveyAnswersSchema } from "../services/surveyAnswers.schema";
 import { env } from "../lib/env";
 
@@ -117,7 +117,7 @@ publicRouter.post(
     const isDuplicate = await checkDuplicateRespondent(qr.shop.id, campaign?.id ?? null, phoneHash);
 
     const respondent = await prisma.surveyRespondent.create({
-      data: { fullName: body.respondent.fullName, phoneNormalizedHash: phoneHash, phoneLast4: last4(normalizedPhone) },
+      data: { fullName: body.respondent.fullName, phoneNormalizedHash: phoneHash, phoneLast4: last4(normalizedPhone), phoneEncrypted: encryptPhone(normalizedPhone) },
     });
     await prisma.privacyConsent.create({
       data: { respondentId: respondent.id, consentGiven: true, consentTextVersion: CONSENT_TEXT_VERSION },

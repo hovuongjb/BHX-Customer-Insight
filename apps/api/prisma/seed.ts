@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { prisma } from "../src/lib/prisma";
-import { hashPhone, last4 } from "../src/lib/phone";
+import { hashPhone, last4, encryptPhone } from "../src/lib/phone";
 import { generateQrToken } from "../src/lib/qrToken";
 import { saveSurveyAnswers, completeSurveySession } from "../src/services/survey";
 import type { SurveyAnswersInput } from "../src/services/surveyAnswers.schema";
@@ -250,7 +250,7 @@ async function main() {
         .findFirst({ where: { shopId: shop.id, campaignId: campaign.id, status: "COMPLETED", respondent: { phoneNormalizedHash: phoneHash } } })
         .then(Boolean);
       const respondent = await prisma.surveyRespondent.create({
-        data: { fullName: randomName(), phoneNormalizedHash: phoneHash, phoneLast4: last4(normalized) },
+        data: { fullName: randomName(), phoneNormalizedHash: phoneHash, phoneLast4: last4(normalized), phoneEncrypted: encryptPhone(normalized) },
       });
       await prisma.privacyConsent.create({ data: { respondentId: respondent.id, consentGiven: true, consentTextVersion: "v1-2026-11-06" } });
       respondentId = respondent.id;

@@ -119,11 +119,12 @@ Dùng cho đáp án cố định (Q1, Q2, Q3-factor, Q4A, Q4B) — không áp d�
 | full_name | text NULL | chỉ có khi `source=QR` |
 | phone_normalized_hash | text NULL | HMAC-SHA256(SĐT chuẩn hoá, khoá bí mật) — dùng để chống trùng, **không lưu SĐT plaintext** |
 | phone_last4 | text NULL | 4 số cuối, chỉ để hiển thị cho nhân viên hỗ trợ, không đủ để định danh |
+| phone_encrypted | text NULL | SĐT chuẩn hóa mã hóa AES-256-GCM (`iv.tag.data` base64), khóa dẫn xuất từ `PHONE_HASH_SECRET`; chỉ ADMIN giải mã để xem/xuất (thêm 2026-11-06 theo yêu cầu gửi quà). Null với khách tạo trước thay đổi này |
 | created_at | timestamptz | |
 
 Index: `(phone_normalized_hash)`.
 
-> Quyết định bảo mật: không lưu SĐT đầy đủ dạng plaintext trong DB nghiệp vụ. Nếu cần liên hệ lại khách (ngoài phạm vi Pilot hiện tại), sẽ cần giải pháp mã hoá hai chiều riêng có kiểm soát truy cập — ghi nhận là việc ngoài phạm vi V2.0 ban đầu, nêu rõ giả định.
+> Quyết định bảo mật: không lưu SĐT đầy đủ dạng plaintext; chỉ lưu hash (chống trùng), 4 số cuối và bản **mã hóa** `phone_encrypted` (chỉ ADMIN giải mã). Việc liên hệ/gửi quà dựa vào bản mã hóa này (cập nhật 2026-11-06).
 
 ### `privacy_consents`
 | Cột | Kiểu | Ghi chú |

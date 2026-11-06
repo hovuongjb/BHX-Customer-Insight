@@ -52,7 +52,7 @@ Mở http://localhost:5173 → trang **Lấy mã QR** (nhập mã ST, ví dụ `
 | `DATABASE_URL` | Chuỗi kết nối khi API chạy **trên máy** (host `localhost`, cổng `5434`). Trong Docker Compose, service `api` tự ghi đè bằng host `db` |
 | `API_PORT` | Cổng API (mặc định 4000) |
 | `JWT_SECRET` | Ký JWT đăng nhập — chuỗi dài ngẫu nhiên |
-| `PHONE_HASH_SECRET` | Khóa HMAC băm SĐT để chống trùng — đặt một lần, sao lưu, **đừng đổi tùy tiện** (đổi sẽ làm hash cũ không khớp) |
+| `PHONE_HASH_SECRET` | Khóa HMAC băm SĐT (chống trùng) **và** là gốc dẫn xuất khóa mã hóa SĐT đầy đủ — đặt một lần, sao lưu, **đừng đổi** (đổi ⇒ hash cũ không khớp và SĐT đã mã hóa không đọc lại được) |
 | `WEB_ORIGIN` | Origin chính xác của web (CORS), ví dụ `http://localhost:5173` |
 | `PUBLIC_SURVEY_BASE_URL` | Gốc URL nhúng vào mã QR (`<gốc>/s/<token>`) — khi thật phải là domain HTTPS mà điện thoại khách truy cập được |
 | `VITE_API_BASE_URL` | URL API mà trình duyệt gọi (nhúng lúc build/khởi động Vite) |
@@ -76,10 +76,10 @@ Chưa có Jest/Vitest. Hiện có 3 lớp kiểm tra, tất cả đã chạy xan
 cd apps/api && npx tsc -p tsconfig.json --noEmit                    # type-check API
 cd apps/web && npx tsc -b                                           # type-check Web
 cd apps/web && npx tsx src/components/survey/surveyEngine.selftest.ts   # state machine câu hỏi (23 kiểm tra)
-node scripts/smoke-test.mjs [http://localhost:4000/api]             # 34 kiểm tra API end-to-end
+node scripts/smoke-test.mjs [http://localhost:4000/api]             # 37 kiểm tra API end-to-end
 ```
 
-`smoke-test.mjs` cần API đang chạy **và DB đã seed**; nó ghi thêm vài bản ghi test (1 người trả lời + 2 session). Nó kiểm tra: đăng nhập/RBAC/CSRF, tra QR công khai, toàn bộ luồng khách (SĐT sai, phân nhánh sai, hoàn tất thiếu quà, trùng SĐT), báo cáo, CSV không lộ SĐT, sửa câu hỏi.
+`smoke-test.mjs` cần API đang chạy **và DB đã seed**; nó ghi thêm vài bản ghi test (2 người trả lời + 2 session). Nó kiểm tra: đăng nhập/RBAC/CSRF, tra QR công khai, toàn bộ luồng khách (SĐT sai, phân nhánh sai, hoàn tất thiếu quà, trùng SĐT), báo cáo, SĐT đầy đủ chỉ ADMIN xem được (danh sách/chi tiết/CSV), sửa câu hỏi.
 
 ## 5. Build & triển khai
 
@@ -100,7 +100,7 @@ docker compose exec api npx tsx prisma/seed.ts   # tuỳ chọn: nạp dữ li�
 
 - API container tự chạy `prisma migrate deploy` khi khởi động. Web serve file tĩnh bằng `serve` ở cổng 5173, API ở `API_PORT`.
 - `VITE_API_BASE_URL` được nhúng **lúc build** web (build-arg trong compose): đổi thì phải `docker compose build web`.
-- Đã kiểm chứng: stack Docker khởi động, migrate, seed và qua 34/34 smoke test (xem HANDOVER).
+- Đã kiểm chứng: stack Docker khởi động, migrate, seed và qua 37/37 smoke test (xem HANDOVER).
 
 ### Triển khai thật (CHƯA làm — việc Giai đoạn 4)
 

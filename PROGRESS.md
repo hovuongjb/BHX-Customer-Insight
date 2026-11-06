@@ -23,9 +23,9 @@ Mức hoàn thành là đánh giá của người bàn giao dựa trên đặc t
 | 14 | Dashboard khu vực / REGION_MANAGER; xuất Excel .xlsx | 30 | ❌ gần như chưa | (admin reports đã có so sánh QLTP, chỉ ADMIN) | — |
 | 15 | Cơ hội cải thiện có vòng đời (`action_items`, 6 trạng thái, ghi chú) | 15 | ❌ chỉ có bảng "nhóm × yếu tố" tính tức thời | schema `ActionItem` (chưa có route/UI) | — |
 | 16 | Quản trị shop/QLTP/user/chiến dịch bằng UI | 10 | ❌ chỉ có API thô | `routes/shops|regions|users|campaigns.routes.ts` | — |
-| 17 | Dữ liệu cá nhân: ẩn danh/xoá, retention, SĐT liên hệ được | 30 | ❌ | `lib/phone.ts`, bảng `survey_respondents` | — |
+| 17 | Dữ liệu cá nhân: SĐT mã hóa + ADMIN xem rõ ✅; ẩn danh/xoá theo yêu cầu, retention, theo dõi "đã gửi quà" ❌ | 50 | ⚠️ | `lib/phone.ts`, `services/reports.ts`, `survey_respondents.phone_encrypted` | smoke |
 | 18 | Test tự động | 35 | ⚠️ chưa có framework; có self-test + smoke script | `surveyEngine.selftest.ts`, `scripts/smoke-test.mjs` | — |
-| 19 | Docker/triển khai | 55 | ⚠️ Compose chạy được; thiếu HTTPS/Nginx/backup/CI | `docker-compose.yml`, `apps/*/Dockerfile` | chạy cô lập 34/34 |
+| 19 | Docker/triển khai | 55 | ⚠️ Compose chạy được; thiếu HTTPS/Nginx/backup/CI | `docker-compose.yml`, `apps/*/Dockerfile` | chạy cô lập 37/37 |
 | 20 | Tài liệu | 85 | ✅ (một số chỗ `docs/` lệch nhẹ) | `CLAUDE.md`, `HANDOVER.md`, `README.md`, `docs/` | — |
 
 ## Độ phủ 25 test case của [docs/08](docs/08-tieu-chi-nghiem-thu.md)
@@ -37,7 +37,7 @@ Tự động (self-test/smoke): #3 ngoài quyền · #4 mở đúng shop · #6 h
 ## Công việc ưu tiên tiếp theo
 
 **P0 — chặn việc dùng với khách thật**
-1. **Chốt cách gửi quà & dữ liệu liên hệ** (HANDOVER Rủi ro #1): lưu SĐT mã hoá 2 chiều (chỉ ADMIN xem, có audit) hoặc đổi quy trình phát quà; rồi quyết định lại phần đồng ý/thông báo với pháp chế (Rủi ro #2).
+1. ~~Chốt cách gửi quà~~ **Đã làm (2026-11-06)**: SĐT lưu mã hóa, ADMIN xem rõ + CSV. Còn lại: **theo dõi trạng thái "đã gửi quà"** (cột + nút trong `/admin/sessions`), cơ chế ẩn danh/xoá SĐT sau thời hạn; chủ dự án đã chấp nhận rủi ro phần đồng ý (Rủi ro #2) — vẫn nên có pháp chế rà soát trước khi mở rộng.
 2. **Chống lạm dụng quà**: không cho session `isDuplicate` nhận/ghi quà, xử lý race (ràng buộc duy nhất hoặc khoá khi tạo session); thêm rate-limit đăng nhập (`express-rate-limit` trên `/api/auth/login`).
 3. **Nâng dependency có cảnh báo high** (Express 4.22+, Vite, react-router-dom, postcss; cân nhắc zod 4 riêng) — làm từng nhóm, chạy lại type-check + self-test + smoke sau mỗi bước.
 
@@ -54,6 +54,6 @@ Tự động (self-test/smoke): #3 ngoài quyền · #4 mở đúng shop · #6 h
 
 ## 3 nhiệm vụ nên làm ngay (theo thứ tự)
 
-1. **Quyết định & cài đặt cách liên hệ/gửi quà + rà soát pháp lý đồng ý dữ liệu** (P0-1) — đây là câu hỏi sản phẩm mở lớn nhất, ảnh hưởng schema và UI.
+1. **Theo dõi "đã gửi quà" + ẩn danh/xoá SĐT theo thời hạn** (P0-1 còn lại) — hoàn thiện quy trình quà sau khi SĐT đã xem được.
 2. **Chặn quà cho khảo sát trùng + rate-limit đăng nhập** (P0-2) — vá hai lỗ hổng nhỏ, nhanh, có thể thêm test vào `scripts/smoke-test.mjs`.
 3. **Dựng Vitest + CI rồi nâng dependency có cảnh báo high** (P0-3 + P2-7) — tạo lưới an toàn trước khi mở rộng tính năng.

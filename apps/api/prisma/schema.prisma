@@ -244,6 +244,7 @@ model SurveyRespondent {
   fullName           String?
   phoneNormalizedHash String?
   phoneLast4         String?
+  phoneEncrypted     String?
   createdAt          DateTime @default(now())
 
   consents PrivacyConsent[]

@@ -99,7 +99,7 @@ Mọi kiểm tra quyền phải thực hiện ở **backend**, không chỉ ẩn
 * Họ tên + SĐT chỉ thu thập ở luồng QR.
 * **Cập nhật 2026-11-06 (quyết định sản phẩm của người dùng):** đã bỏ khối thông báo quyền riêng tư đầy đủ + checkbox đồng ý chủ động. Màn hình nhập tên/SĐT giờ chỉ có **một dòng thông báo ngắn**: "BHX xin phép thu thập họ tên và số điện thoại để gửi phần quà cảm ơn sau khi anh/chị hoàn thành khảo sát." Không còn bước tick đồng ý riêng — tiếp tục điền form coi như đồng ý.
   ⚠️ Thay đổi này **mâu thuẫn với yêu cầu ban đầu** ("đồng ý chủ động, không mặc định") và với Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân (thường yêu cầu có cơ chế đồng ý rõ ràng khi thu thập dữ liệu cá nhân). Đây là lựa chọn có chủ đích của người dùng cho giai đoạn Pilot nội bộ, **không phải đánh giá pháp lý** — bắt buộc rà soát lại với bộ phận pháp lý trước khi dùng cho khách hàng thật/production (xem mục dưới).
-* SĐT chuẩn hóa, **bảo vệ khi lưu** (hash có khóa để chống trùng, không lưu plaintext tùy nghi), không xuất hiện trong URL hoặc log.
+* **Cập nhật 2026-11-06 (quyết định của chủ dự án, chấp nhận rủi ro):** SĐT đầy đủ được lưu **mã hóa AES-256-GCM** (`survey_respondents.phone_encrypted`, khóa dẫn xuất từ `PHONE_HASH_SECRET`) và **hiển thị đầy đủ, rõ ràng cho ADMIN** (danh sách/chi tiết phản hồi và file CSV, kèm họ tên) để gửi quà cảm ơn; mỗi lần xem/xuất đều ghi `audit_logs`. Chống trùng vẫn dùng HMAC (`phone_normalized_hash`). SĐT không xuất hiện trong URL hoặc log; **chỉ ADMIN** đọc được. Đổi `PHONE_HASH_SECRET` sẽ làm cả hash lẫn SĐT mã hóa cũ không còn dùng được.
 * HTTPS, input validation, rate limiting, chống SQL injection/XSS/CSRF, không lộ PII trong dashboard công khai, không đưa tên/SĐT vào analytics logs.
 * Có cơ chế xóa/ẩn danh theo yêu cầu và lịch sử truy cập dữ liệu nhạy cảm (audit log).
 * Trước khi production: rà soát yêu cầu pháp luật VN về bảo vệ dữ liệu cá nhân (ghi rõ đây là việc cần làm, không tự kết luận thay luật sư) — **đặc biệt là thay đổi về đồng ý nêu trên.**
@@ -135,7 +135,7 @@ Không dùng dịch vụ trả phí cho chức năng cốt lõi. PWA nếu phù 
 * Không suy luận doanh thu tăng thêm khi chưa có dữ liệu bán hàng thực tế.
 * Không hardcode danh sách nhãn hiệu/quy cách/loại sản phẩm trong giao diện.
 * Không lấy shop ID từ dữ liệu client gửi lên để quyết định nơi lưu kết quả.
-* Không lưu SĐT dạng dễ dò (URL, log, plaintext tùy nghi) hoặc coi SĐT chưa OTP là danh tính xác thực.
+* Không lưu SĐT plaintext, không đưa SĐT vào URL/log, không coi SĐT chưa OTP là danh tính xác thực (SĐT đầy đủ chỉ lưu dạng mã hóa, xem §7).
 * Không microservices/Kubernetes — ưu tiên monolith có cấu trúc tốt.
 
 ---
@@ -191,7 +191,7 @@ Kiểm tra trước khi báo hoàn thành:
 cd apps/api && npx tsc -p tsconfig.json --noEmit           # type-check API
 cd apps/web && npx tsc -b                                  # type-check Web
 cd apps/web && npx tsx src/components/survey/surveyEngine.selftest.ts   # self-test state machine (23 OK)
-node scripts/smoke-test.mjs                                # 34 kiểm tra API (cần API chạy + DB đã seed)
+node scripts/smoke-test.mjs                                # 37 kiểm tra API (cần API chạy + DB đã seed)
 ```
 
 Chưa có framework test (Jest/Vitest) — đó là việc ưu tiên, xem PROGRESS.md.

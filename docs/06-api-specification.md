@@ -126,9 +126,9 @@ Mọi lần đọc PII (ví dụ xem chi tiết respondent) phải tự động 
 |---|---|---|
 | GET | `/api/admin/report-filters` | Danh sách QLTP + chiến dịch cho bộ lọc |
 | GET | `/api/admin/reports/summary?from&to&regionId&shopCode&source&campaignId` | Tổng hợp báo cáo (kèm cơ hội cải thiện, theo QLTP, theo ngày, quà đã chọn) |
-| GET | `/api/admin/reports/sessions?...&page&pageSize` | Danh sách phản hồi (có tên khách + 4 số cuối SĐT → ghi `audit_logs`) |
+| GET | `/api/admin/reports/sessions?...&page&pageSize` | Danh sách phản hồi (có tên khách + **SĐT đầy đủ** `phone` đã giải mã, + `phoneLast4` → ghi `audit_logs`) |
 | GET | `/api/admin/reports/sessions/:id` | Chi tiết một phản hồi (ghi `audit_logs`) |
-| GET | `/api/admin/reports/export.csv?...` | CSV theo bộ lọc, không chứa tên/SĐT khách (ghi `audit_logs`) |
+| GET | `/api/admin/reports/export.csv?...` | CSV theo bộ lọc, **có họ tên + SĐT khách** (ADMIN, ghi `audit_logs`) |
 | GET | `/api/questions` | Phiên bản hiện tại + lịch sử của 8 câu hỏi |
 | POST | `/api/questions/:questionKey/versions` | Tạo phiên bản mới `{labelText, options[]}`; câu có đáp án cố định chỉ được đổi chữ |
 | PATCH | `/api/catalog/product-groups/:id` | Đổi tên nhóm hàng |

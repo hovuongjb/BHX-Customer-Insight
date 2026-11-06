@@ -1,5 +1,6 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/prisma";
+import { decryptPhone } from "../lib/phone";
 
 export interface ReportFilters {
   from?: Date;
@@ -179,7 +180,7 @@ export async function getReportSummary(filters: ReportFilters) {
 
 const sessionListInclude = {
   shop: { include: { region: true } },
-  respondent: { select: { fullName: true, phoneLast4: true } },
+  respondent: { select: { fullName: true, phoneLast4: true, phoneEncrypted: true } },
   groupChoices: { include: { productGroup: true } },
 } satisfies Prisma.SurveySessionInclude;
 
@@ -213,6 +214,7 @@ export async function listSessions(filters: ReportFilters, page: number, pageSiz
       qltpName: s.shop.region.name,
       respondentName: s.respondent?.fullName ?? null,
       phoneLast4: s.respondent?.phoneLast4 ?? null,
+      phone: decryptPhone(s.respondent?.phoneEncrypted),
       giftName: s.giftNameSnapshot,
       buyOutside: s.groupChoices.filter((c) => c.questionKey === "Q1" && c.productGroup).map((c) => c.productGroup!.name),
       wantImprovement: s.groupChoices.filter((c) => c.questionKey === "Q2" && c.productGroup).map((c) => c.productGroup!.name),
@@ -225,7 +227,7 @@ export async function getSessionDetail(id: string) {
     where: { id },
     include: {
       shop: { include: { region: true } },
-      respondent: { select: { fullName: true, phoneLast4: true } },
+      respondent: { select: { fullName: true, phoneLast4: true, phoneEncrypted: true } },
       groupChoices: { include: { productGroup: true } },
       changeFactors: { include: { productGroup: true } },
       detailChoices: { include: { productGroup: true } },
@@ -262,6 +264,7 @@ export async function getSessionDetail(id: string) {
     qltpName: s.shop.region.name,
     respondentName: s.respondent?.fullName ?? null,
     phoneLast4: s.respondent?.phoneLast4 ?? null,
+    phone: decryptPhone(s.respondent?.phoneEncrypted),
     giftName: s.giftNameSnapshot,
     q1: { allAtBhx: q1.some((c) => c.isExclusiveChoice), groups: q1.filter((c) => c.productGroup).map((c) => c.productGroup!.name) },
     q2: { noSwitch: q2.some((c) => c.isExclusiveChoice), groups: q2.filter((c) => c.productGroup).map((c) => c.productGroup!.name) },
@@ -274,7 +277,7 @@ function csvCell(value: unknown): string {
   return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 
-/** CSV of the filtered sessions. Deliberately excludes respondent name/phone (no PII in exports). */
+/** CSV of the filtered sessions. Includes respondent name + full phone (admin-only, audited) so gifts can be sent. */
 export async function exportSessionsCsv(filters: ReportFilters): Promise<string> {
   const where = await buildWhere(filters);
   const [sessions, factorLabels] = await Promise.all([
@@ -282,6 +285,7 @@ export async function exportSessionsCsv(filters: ReportFilters): Promise<string>
       where,
       include: {
         shop: { include: { region: true } },
+        respondent: { select: { fullName: true, phoneEncrypted: true } },
         groupChoices: { include: { productGroup: true } },
         changeFactors: { include: { productGroup: true } },
         detailChoices: { include: { productGroup: true } },
@@ -296,6 +300,8 @@ export async function exportSessionsCsv(filters: ReportFilters): Promise<string>
   const header = [
     "Bắt đầu",
     "Hoàn tất",
+    "Họ tên khách",
+    "SĐT khách",
     "Mã ST",
     "Siêu thị",
     "QLTP",
@@ -322,6 +328,12 @@ export async function exportSessionsCsv(filters: ReportFilters): Promise<string>
       [
         fmt(s.startedAt),
         fmt(s.completedAt),
+        s.respondent?.fullName ?? "",
+        // ="…" keeps Excel from dropping the leading 0 of the phone number.
+        (() => {
+          const phone = decryptPhone(s.respondent?.phoneEncrypted);
+          return phone ? `="${phone}"` : "";
+        })(),
         s.shop.code,
         s.shop.name,
         s.shop.region.name,

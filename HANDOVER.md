@@ -18,12 +18,12 @@ Hai nguồn thu thập, dùng chung bộ câu hỏi: (a) khách tự làm qua **
 | QR | Trang chủ "nhập mã ST → Lấy QR" **không cần đăng nhập** (chỉ tra QR có sẵn); tạo/vô hiệu hoá QR + tải PNG/SVG/poster A4 (cần đăng nhập, đúng phạm vi) | smoke + thử UI |
 | Khảo sát khách (QR) | Chào mừng → nhập tên/SĐT (1 dòng thông báo quà, không còn checkbox đồng ý) → Câu 1–4 phân nhánh, sửa/quay lại được → chọn 1 quà → cảm ơn | thử UI đầy đủ + smoke |
 | Khảo sát nhân viên | Đăng nhập STAFF, shop lấy từ tài khoản, không thu PII khách | thử UI + smoke |
-| Backend nghiệp vụ | Validate phân nhánh/độc quyền ở server, lưu idempotent, hoàn tất bắt buộc `giftId`, chống trùng (SĐT chuẩn hóa + HMAC), không tin `shopId` từ client | smoke 34/34 |
+| Backend nghiệp vụ | Validate phân nhánh/độc quyền ở server, lưu idempotent, hoàn tất bắt buộc `giftId`, chống trùng (SĐT chuẩn hóa + HMAC), SĐT lưu mã hóa + ADMIN xem đầy đủ, không tin `shopId` từ client | smoke 37/37 |
 | Phân quyền | 4 vai trò kiểm ở backend, CSRF double-submit, phạm vi shop/khu vực | smoke (RBAC, CSRF) |
 | Dashboard shop | `/app/dashboard` (ADMIN/REGION/SHOP_MANAGER) | thử UI |
 | **Trang quản trị ADMIN** `/admin` | Báo cáo (bộ lọc ngày/QLTP/shop/nguồn/chiến dịch, cơ hội cải thiện, biểu đồ, so sánh QLTP, quà đã chọn, CSV); danh sách + chi tiết từng phản hồi (có audit log); sửa câu hỏi/đáp án theo **phiên bản**, sửa tên nhóm hàng/nhãn hiệu/quy cách/loại SP | smoke + thử UI |
 | Quà tặng | 6 quà (ảnh thật), chọn 1 / khảo sát, lưu `gift_id` + snapshot tên; UI chỉ hiện ảnh + tên | thử UI |
-| Hạ tầng | Docker Compose chạy được toàn stack (đã sửa lỗi image API — xem mục 6) | chạy cô lập 34/34 |
+| Hạ tầng | Docker Compose chạy được toàn stack (đã sửa lỗi image API — xem mục 6) | chạy cô lập 37/37 |
 
 ## 3. Đang làm dở
 
@@ -53,11 +53,11 @@ Không có thay đổi code dang dở hay file nửa chừng. Các hạng mục 
 | Câu hỏi/đáp án cố định lưu trong `survey_option_configs` theo **version** | Sửa chữ tạo version mới, khảo sát cũ giữ nguyên. Đáp án có **mã cố định** (7 yếu tố Câu 3, "Không có…", "Khác/Không quan trọng" Câu 4C) chỉ cho sửa chữ vì mã gắn với logic; Q4A/Q4B thêm/bớt tự do |
 | Lưu câu trả lời kiểu **thay thế toàn bộ** (delete+insert trong 1 transaction, theo session) | Idempotent, retry an toàn khi mất mạng; FE giữ state, gửi snapshot cuối |
 | Luồng câu hỏi FE là **state machine thuần** (`surveyEngine.ts`), sửa câu trước ⇒ reset toàn bộ phần phụ thuộc phía sau; "Quay lại" khôi phục cả state | Đã từng có 2 lỗi chỉ lộ khi test động (`groupIndex` không lưu, Back không khôi phục state) → có self-test bao phủ |
-| SĐT: chuẩn hóa → **HMAC-SHA256** (`PHONE_HASH_SECRET`) + lưu 4 số cuối; **không lưu SĐT đầy đủ** | Bảo vệ dữ liệu; hệ quả: **không thể liên hệ khách để gửi quà** (xem Rủi ro #1) |
+| SĐT: chuẩn hóa → **HMAC-SHA256** (chống trùng) + 4 số cuối + **bản mã hóa AES-256-GCM** (khóa dẫn xuất từ `PHONE_HASH_SECRET`); ADMIN thấy SĐT đầy đủ ở `/admin/sessions` và CSV, có audit | **Quyết định của chủ dự án 2026-11-06** để gửi quà cảm ơn (trước đó chỉ lưu hash + 4 số cuối). Khách cũ tạo trước thay đổi chỉ có 4 số cuối. Đổi `PHONE_HASH_SECRET` ⇒ mất khả năng đọc SĐT cũ |
 | Auth: JWT trong cookie httpOnly `SameSite=Strict` + CSRF double-submit | Tránh XSS đánh cắp token; hệ quả: web và API phải **cùng site** |
 | Tra cứu QR có sẵn là **công khai**, tạo/huỷ QR vẫn cần quyền | Yêu cầu của chủ dự án (nhân viên khỏi đăng nhập); QR vốn được dán công khai. Ghi ở CLAUDE.md §3 |
 | Bỏ khối quyền riêng tư + checkbox đồng ý; thay 1 dòng thông báo quà | **Yêu cầu của chủ dự án**, trái yêu cầu gốc và có rủi ro pháp lý (Rủi ro #2). `privacy_consents.consentGiven` vẫn tự ghi `true` + `consentTextVersion` để còn dấu vết |
-| CSV xuất **không chứa tên/SĐT**; danh sách phản hồi có tên + 4 số cuối và ghi audit | Giảm rò rỉ PII qua file |
+| CSV và danh sách phản hồi (ADMIN) **có họ tên + SĐT đầy đủ**, ghi audit mỗi lần xem/xuất | Phục vụ gửi quà; SĐT trong CSV dạng `="0912…"` để Excel không mất số 0 |
 | Ảnh quà ở `apps/web/public/gifts/` (tĩnh, cắt từ ảnh chủ dự án gửi) | Đơn giản; cần xác nhận quyền dùng ảnh nếu repo công khai |
 
 ## 6. Lỗi còn tồn tại / hạn chế đã biết
@@ -76,8 +76,8 @@ Không có thay đổi code dang dở hay file nửa chừng. Các hạng mục 
 
 | # | Rủi ro | Mức | Gợi ý |
 |---|---|---|---|
-| 1 | **Không có SĐT đầy đủ để gửi quà** dù thông báo hứa gửi quà — vận hành sẽ vướng | Cao (nghiệp vụ) | Quyết định: lưu SĐT mã hoá 2 chiều (AES-GCM, khoá riêng) chỉ ADMIN xem + audit; hoặc phát quà tại quầy bằng mã/phiếu; hoặc bỏ lời hứa gửi quà |
-| 2 | Thu họ tên + SĐT **không có đồng ý rõ ràng** — rủi ro với Nghị định 13/2023/NĐ-CP | Cao (pháp lý) | Rà soát với pháp chế **trước khi dùng với khách thật**; tối thiểu khôi phục checkbox/thông báo mục đích-thời hạn-liên hệ. Không phải kết luận pháp lý |
+| 1 | ~~Không có SĐT đầy đủ để gửi quà~~ — **đã xử lý 2026-11-06** (lưu mã hóa, ADMIN xem rõ). Rủi ro còn lại: SĐT khách là dữ liệu nhạy cảm, ai có quyền ADMIN hoặc có `PHONE_HASH_SECRET` + DB đều đọc được; chưa có cơ chế xoá/ẩn danh; **chưa có theo dõi "đã gửi quà"** | TB | Thêm trạng thái gửi quà; giới hạn số tài khoản ADMIN; sao lưu DB mã hoá |
+| 2 | Thu họ tên + SĐT **không có đồng ý rõ ràng** — rủi ro với Nghị định 13/2023/NĐ-CP (**chủ dự án đã chấp nhận rủi ro**, vẫn nên rà soát pháp lý trước khi dùng rộng) | Cao (pháp lý) | Rà soát với pháp chế **trước khi dùng với khách thật**; tối thiểu khôi phục checkbox/thông báo mục đích-thời hạn-liên hệ. Không phải kết luận pháp lý |
 | 3 | Dữ liệu cá nhân: tên khách lưu rõ; chưa có xoá/ẩn danh theo yêu cầu, chưa có chính sách lưu trữ | Cao | Làm API ẩn danh + job xoá theo thời hạn |
 | 4 | Lạm dụng quà (trùng/giả mạo SĐT, không OTP) — xem lỗi #1 | Trung bình | Chặn quà cho session trùng; cân nhắc OTP |
 | 5 | Triển khai thô: HTTP, DB publish cổng 5434, mật khẩu demo `Password123!` trong seed, JWT mặc định | Cao nếu đưa lên mạng | Làm đủ danh sách "Triển khai thật" trong README |
@@ -95,8 +95,8 @@ Không có thay đổi code dang dở hay file nửa chừng. Các hạng mục 
 | `tsc -b` Web | PASS |
 | `tsc` build API / `vite build` Web | PASS (Vite cảnh báo chunk > 500 kB) |
 | Self-test state machine (`surveyEngine.selftest.ts`) | **23/23 PASS** |
-| Smoke test API trên stack chạy local | **34/34 PASS** |
-| Smoke test trên **stack Docker Compose cô lập** (DB mới → migrate tự động → seed trong container → smoke) | **34/34 PASS** |
+| Smoke test API trên stack chạy local | **37/37 PASS** |
+| Smoke test trên **stack Docker Compose cô lập** (DB mới → migrate tự động → seed trong container → smoke) | **37/37 PASS** (chạy lại sau thay đổi SĐT) |
 | `docker compose config` | hợp lệ |
 | Quét bí mật trong file sẽ commit | Không có secret thật; chỉ `.env.example` placeholder. `.env` (giá trị dev) bị ignore |
 | `npm audit` | API 8, Web 6 cảnh báo (mục 6.9) |
