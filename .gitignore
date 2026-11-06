@@ -1,0 +1,20 @@
+# dependencies & build output
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+
+# secrets / local config — NEVER commit (copy .env.example to .env instead)
+.env
+.env.*
+!.env.example
+
+# logs, OS & editor noise
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Claude Code: personal/local settings only (shared project settings may be committed)
+.claude/settings.local.json

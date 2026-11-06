@@ -1,0 +1,1898 @@
+{
+  "regions": [
+    {
+      "code": "QLTP-ANHTUAN",
+      "name": "Anh Tuấn"
+    },
+    {
+      "code": "QLTP-HUYHOANG",
+      "name": "Huy Hoàng"
+    },
+    {
+      "code": "QLTP-HAININH",
+      "name": "Hải Ninh"
+    },
+    {
+      "code": "QLTP-KHACMAO",
+      "name": "Khắc Mão"
+    },
+    {
+      "code": "QLTP-MINHLOI",
+      "name": "Minh Lợi"
+    },
+    {
+      "code": "QLTP-MINHNHUT",
+      "name": "Minh Nhựt"
+    },
+    {
+      "code": "QLTP-MINHTU",
+      "name": "Minh Tú"
+    },
+    {
+      "code": "QLTP-NHUTTRUONG",
+      "name": "Nhựt Trường"
+    },
+    {
+      "code": "QLTP-PHUONGCHUNG",
+      "name": "Phương Chung"
+    },
+    {
+      "code": "QLTP-QUANGMANH",
+      "name": "Quang Mạnh"
+    },
+    {
+      "code": "QLTP-THANHDUY",
+      "name": "Thanh Duy"
+    },
+    {
+      "code": "QLTP-THANHHAI",
+      "name": "Thanh Hải"
+    },
+    {
+      "code": "QLTP-THECUONG",
+      "name": "Thế Cường"
+    },
+    {
+      "code": "QLTP-TRUONGDUY",
+      "name": "Trường Duy"
+    },
+    {
+      "code": "QLTP-TUNGLAM",
+      "name": "Tùng Lâm"
+    },
+    {
+      "code": "QLTP-VANHAI",
+      "name": "Văn Hải"
+    },
+    {
+      "code": "QLTP-VANSON",
+      "name": "Văn Sơn"
+    },
+    {
+      "code": "QLTP-VANAM",
+      "name": "Văn Đảm"
+    }
+  ],
+  "shops": [
+    {
+      "code": "30051",
+      "name": "Cao Xá",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "30189",
+      "name": "Đức Quang",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "30531",
+      "name": "An Chiểu",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "31049",
+      "name": "Liêu Thượng",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "31428",
+      "name": "Chợ Đầu",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "31568",
+      "name": "222 Văn Giang",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "31611",
+      "name": "Yên Mỹ",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "34679",
+      "name": "Dốc Lã",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "34759",
+      "name": "Chợ Ngàng",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "34847",
+      "name": "Thượng Bùi",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "34989",
+      "name": "Cao Trai (mở 21/10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "35525",
+      "name": "57 Phố Thứa",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "35532",
+      "name": "Triệu Việt Vương",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "35935",
+      "name": "Tân Việt (mở 26/10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "36000",
+      "name": "Sài Thị (mở 12/10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "36001",
+      "name": "Long Hưng (chưa bán T10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "36085",
+      "name": "Hoan Ái (mở 23/10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "36086",
+      "name": "Trai Trang (mở 12/10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "36088",
+      "name": "Thư Thị (mở 15/10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "36278",
+      "name": "Yên Lịch (mở 19/10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "36745",
+      "name": "Thứa 2 (chưa bán T10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "36761",
+      "name": "Chợ Cơm (chưa bán T10)",
+      "qltp": "Anh Tuấn"
+    },
+    {
+      "code": "30264",
+      "name": "Lập Lễ",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "30812",
+      "name": "Phả Lễ",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "30824",
+      "name": "389 Đằng Hải",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "30918",
+      "name": "Hoa Động",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "31113",
+      "name": "TT Minh Đức",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "31153",
+      "name": "Kênh Giang",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "31156",
+      "name": "Thủy Triều",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "31385",
+      "name": "Nguyễn Văn Hới",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "31435",
+      "name": "380 Phủ Thượng Đoạn",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "31566",
+      "name": "981 Ngô Gia Tự",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "34827",
+      "name": "Tam Hưng",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "35555",
+      "name": "Liên Khê",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "35566",
+      "name": "110 Trần Hưng Đạo (Núi Đèo)",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "35697",
+      "name": "Phương Lưu",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "35764",
+      "name": "Trung Lực",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "35848",
+      "name": "270A Đông Khê (mở 09/10)",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "35849",
+      "name": "Tràng Cát (mở 27/10)",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "35943",
+      "name": "193 Lũng Bắc",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "36039",
+      "name": "29 đường Chợ Lũng (chưa bán T10)",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "36382",
+      "name": "523 Ngô Gia Tự (mở 27/10)",
+      "qltp": "Huy Hoàng"
+    },
+    {
+      "code": "28260",
+      "name": "Giao Thủy",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "28273",
+      "name": "Cổ Lễ",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "28281",
+      "name": "Hải Hưng",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "28574",
+      "name": "Hải Hưng (Chợ Cầu Đôi)",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "28611",
+      "name": "Xuân Trường (Chợ Cầu Cụ)",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "28680",
+      "name": "Hải Anh (chợ Đền)",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "28730",
+      "name": "Trực Thái",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "28771",
+      "name": "Hải Tiến (Chợ Cồn)",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "28852",
+      "name": "Hải Hưng (Chợ Trung Thành)",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "31108",
+      "name": "Yên Định",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "31485",
+      "name": "TT Cồn",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "34974",
+      "name": "Quất Lâm",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "34975",
+      "name": "Giao Nhân",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "35674",
+      "name": "Chợ Bắc (mở 25/10)",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "35675",
+      "name": "Trung Lao (mở 28/10)",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "36035",
+      "name": "Quyết Tiến 1 (mở 10/10)",
+      "qltp": "Hải Ninh"
+    },
+    {
+      "code": "30037",
+      "name": "Điện Biên Phủ",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "30046",
+      "name": "Thanh Tùng (Chợ Cầu Vồng)",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "31022",
+      "name": "Đông Giao",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "31141",
+      "name": "Kẻ Sặt",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "31278",
+      "name": "Bạch Năng Thi",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "31310",
+      "name": "Bình Xuyên",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "31507",
+      "name": "59 An Ninh",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "34653",
+      "name": "41 Tam Giang",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "34676",
+      "name": "Gia Lộc",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "36005",
+      "name": "Chợ Phủ (mở 16/10)",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "36068",
+      "name": "Phố Ghẽ (mở 15/10)",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "36074",
+      "name": "Bình Long (mở 16/10)",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "36087",
+      "name": "Phú Lộc (mở 17/10)",
+      "qltp": "Khắc Mão"
+    },
+    {
+      "code": "30053",
+      "name": "Phương Nam",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "30104",
+      "name": "Vàng Danh",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "30434",
+      "name": "Xuân Quang",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "30435",
+      "name": "Hoàng Hoa Thám",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "30816",
+      "name": "Đông Triều",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "30947",
+      "name": "Đức Chính",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "31112",
+      "name": "Kim Sen",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "31222",
+      "name": "Phong Cốc",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "31223",
+      "name": "Khu Công Nông",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "31309",
+      "name": "Trần Hưng Đạo",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "31624",
+      "name": "Búi Tre",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "34843",
+      "name": "Trần Nhân Tông",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "35702",
+      "name": "Lâm Xá",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "35821",
+      "name": "Chợ Giếng (mở 03/10)",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "35823",
+      "name": "Hà An",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "35963",
+      "name": "Quang Trung",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "36283",
+      "name": "Hà An 2 (mở 24/10)",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "36284",
+      "name": "Bình Khê (mở 24/10)",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "36523",
+      "name": "Chợ Mễ Xá (mở 24/10)",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "36742",
+      "name": "Chợ Bóp (mở 31/10)",
+      "qltp": "Minh Lợi"
+    },
+    {
+      "code": "29912",
+      "name": "Thiên Hương",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "29913",
+      "name": "Kiền Bái",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "29966",
+      "name": "An Phong",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "30010",
+      "name": "Hùng Vương (Quán Toan)",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "30102",
+      "name": "Hiến Thành",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "30185",
+      "name": "An Hải",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "30477",
+      "name": "An Quang",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "30532",
+      "name": "Đại Bản",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "30969",
+      "name": "Phú Thứ",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "31011",
+      "name": "Nhị Chiểu",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "31224",
+      "name": "Cao Nhân",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "31254",
+      "name": "Chợ Cung",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "31256",
+      "name": "Việt Khê",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "34823",
+      "name": "Chợ Hà Đậu",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "34880",
+      "name": "Lê Sáng",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "34881",
+      "name": "Thiên Hương 1",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "34885",
+      "name": "Dụ Nghĩa",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "35711",
+      "name": "Hồ Rế",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "35800",
+      "name": "Mỹ Đồng",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "35895",
+      "name": "Kỳ Sơn (mở 12/10)",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "36053",
+      "name": "Quảng Thanh (mở 26/10)",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "36104",
+      "name": "Việt Khê 2 (mở 15/10)",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "36391",
+      "name": "Hợp Thành (mở 31/10)",
+      "qltp": "Minh Nhựt"
+    },
+    {
+      "code": "28104",
+      "name": "Núi Vàng",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28124",
+      "name": "Yên Thắng",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28128",
+      "name": "Trương Định",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28129",
+      "name": "Chợ Me",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28153",
+      "name": "Đồng Giao",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28163",
+      "name": "Chợ Na",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28166",
+      "name": "Chợ Vệ",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28179",
+      "name": "Trần Phú",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28205",
+      "name": "146 Xuân Thành",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28210",
+      "name": "Hoa Lư (chợ Ninh Mỹ)",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28212",
+      "name": "Bắc Sơn",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28216",
+      "name": "Hải Thượng Lãn Ông",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28626",
+      "name": "Đông Hoa Lư (Chợ Bợi)",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28797",
+      "name": "Cát Đằng",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28798",
+      "name": "Vạn Điểm",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "29831",
+      "name": "Chợ Đồng Phong",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "29846",
+      "name": "Yên Đồng",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "31271",
+      "name": "Nguyễn Viết Xuân",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "31358",
+      "name": "Tân Lâm",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "31604",
+      "name": "Lương Văn Tuỵ",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "36311",
+      "name": "Thôn Rịa (mở 16/10)",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "36749",
+      "name": "Phố Cổ (mở 30/10)",
+      "qltp": "Minh Tú"
+    },
+    {
+      "code": "28691",
+      "name": "119 Trần Tử Bình",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "28775",
+      "name": "Phù Vân",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "28841",
+      "name": "Phủ Lý",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "28896",
+      "name": "Lê Duẩn",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "28897",
+      "name": "Hoà Ngãi",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "28916",
+      "name": "Tân Thanh",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "28942",
+      "name": "Thi Sơn",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "28943",
+      "name": "Thần Nữ",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "29757",
+      "name": "Lý Nhân (Chợ Phúc)",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "30451",
+      "name": "45A Lê Chân",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "31415",
+      "name": "Chợ Phú Đa",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "31426",
+      "name": "Nhân Chính",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "31481",
+      "name": "Phạm Ngọc Nhị",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "31595",
+      "name": "Bình Lục",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "31597",
+      "name": "Đồng Văn Xanh",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "31620",
+      "name": "Chợ Do Nha",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "34883",
+      "name": "Chợ Chều",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "34884",
+      "name": "Câu Tử",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "35489",
+      "name": "An Lão",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "35530",
+      "name": "Bầu Cừu",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "35858",
+      "name": "Điệp Sơn",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "35913",
+      "name": "109 Quang Trung (mở 11/10)",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "35922",
+      "name": "Hoà Lạc (mở 05/10)",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "36118",
+      "name": "Hoà Mạc (mở 06/10)",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "36120",
+      "name": "Trác Vân (mở 05/10)",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "36458",
+      "name": "Chợ Bút 989 (mở 30/10)",
+      "qltp": "Nhựt Trường"
+    },
+    {
+      "code": "29983",
+      "name": "An Đồng (Máng Nước)",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "30008",
+      "name": "636 Thiên Lôi",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "30055",
+      "name": "268 Thiên Lôi",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "30360",
+      "name": "Vĩnh Khê",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "30916",
+      "name": "Hoàng Mai",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "30952",
+      "name": "90 Trần Nguyên Hãn",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "30953",
+      "name": "PG An Đồng",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "30954",
+      "name": "487 Chợ Hàng",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "31000",
+      "name": "115 Chợ Hàng",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "31109",
+      "name": "69 Hồng Bàng",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "31140",
+      "name": "Hồng Thái",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "31301",
+      "name": "Chợ Cam Lộ",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "31339",
+      "name": "Chợ Gò Công",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "34577",
+      "name": "32 Lương Khánh Thiện",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "34675",
+      "name": "805 Thiên Lôi",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "34681",
+      "name": "Quán Nam",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "35837",
+      "name": "Đồng Hoà",
+      "qltp": "Phương Chung"
+    },
+    {
+      "code": "28286",
+      "name": "Minh Hòa",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28287",
+      "name": "Chợ Giá 2",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28288",
+      "name": "Đông Quan",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28294",
+      "name": "Thái Bình (chợ Mễ)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28309",
+      "name": "Đông La",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28310",
+      "name": "Đông Xuân",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28602",
+      "name": "Chợ Trạm Bơm",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28606",
+      "name": "Đông Quan (Châu Giang)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28748",
+      "name": "Long Hưng (chợ Cầu Đen)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28830",
+      "name": "Bùi Thị Xuân",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28937",
+      "name": "An Đồng",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "29759",
+      "name": "Phong Lẫm (Chợ Hồ)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "29763",
+      "name": "Bồ Xuyên",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "29785",
+      "name": "Nguyễn Đức Cảnh (Cầu Bo)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "30458",
+      "name": "An Bài",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "31163",
+      "name": "Hưng Hà",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "31342",
+      "name": "Eden Thái Bình",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "31343",
+      "name": "Trần Phú",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "31521",
+      "name": "Hải An",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "31559",
+      "name": "225 - 227 Trần Nhân Tông",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "31607",
+      "name": "Quỳnh Hồng",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "31644",
+      "name": "Đồng Hòa",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "34640",
+      "name": "Nhân Phú",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "34646",
+      "name": "Đường 3/2",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "35535",
+      "name": "An Lạc 3 (mở 05/10)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "35722",
+      "name": "Thanh Tân",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "35910",
+      "name": "Minh Khai",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "36076",
+      "name": "Đông Hưng (mở 16/10)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "36186",
+      "name": "Đô Kỳ (mở 06/10)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "36815",
+      "name": "411 Lê Quý Đôn (mở 28/10)",
+      "qltp": "Quang Mạnh"
+    },
+    {
+      "code": "28941",
+      "name": "Trần Tất Văn",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "30009",
+      "name": "Kiến Hưng",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "30056",
+      "name": "Bắc Hưng",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "30232",
+      "name": "Đại Hợp",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "30353",
+      "name": "Quý Kim",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "30754",
+      "name": "Tú Sơn",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "30775",
+      "name": "Phạm Văn Đồng",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "31157",
+      "name": "Hưng Đạo",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "31158",
+      "name": "110 Hoàng Quốc Việt",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "31292",
+      "name": "TT Núi Đối",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "31341",
+      "name": "Mỹ Lộc",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "34795",
+      "name": "Chợ Cá Tú Đôi",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "34822",
+      "name": "Kiến Minh",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "34955",
+      "name": "Chợ Văn Hoà (mở 27/10)",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "35484",
+      "name": "Thuận Thiên",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "35944",
+      "name": "36 Đình Đoài (mở 22/10)",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "36028",
+      "name": "Tân Trào (mở 17/10)",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "36244",
+      "name": "Chợ Kha Lâm (mở 13/10)",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "36649",
+      "name": "1056 Trần Nhân Tông (mở 27/10)",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "36684",
+      "name": "Bàng La (chưa bán T10)",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "36735",
+      "name": "Đại Lộc (chưa bán T10)",
+      "qltp": "Thanh Duy"
+    },
+    {
+      "code": "30034",
+      "name": "Vĩnh Bảo",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "30351",
+      "name": "Chợ Quý Cao",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "30352",
+      "name": "Tứ Kỳ",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "30433",
+      "name": "Cựu Đôi",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "30968",
+      "name": "Ninh Giang",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31001",
+      "name": "Ninh Giang 2",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31181",
+      "name": "Lạc Phượng",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31265",
+      "name": "Hoàng Xá",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31291",
+      "name": "Đại Hoàng 2",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31483",
+      "name": "An Khánh",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31493",
+      "name": "An Lão",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31501",
+      "name": "Chợ Bứa",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31556",
+      "name": "Nam Am",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31570",
+      "name": "An Luận",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "31613",
+      "name": "Tứ Kỳ 2 (Chợ Yên)",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "34682",
+      "name": "Thạch Lựu",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "34793",
+      "name": "Chợ Kim Đới",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "35632",
+      "name": "Chợ Gừng (mở 02/10)",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "35863",
+      "name": "Chợ Đan Điền (mở 02/10)",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "35882",
+      "name": "Chợ Hoà Bình (mở 17/10)",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "35994",
+      "name": "Vĩnh An (mở 23/10)",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "36047",
+      "name": "Chợ Lác (mở 30/10)",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "36253",
+      "name": "Chợ Đọ (mở 16/10)",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "36271",
+      "name": "Cúc Phố (mở 30/10)",
+      "qltp": "Thanh Hải"
+    },
+    {
+      "code": "28285",
+      "name": "Thư Trì",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28302",
+      "name": "Trần Lãm (Chợ Vũ Tây)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28303",
+      "name": "Vũ Quý (Chợ Niềm)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28547",
+      "name": "Hưng Phú",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28564",
+      "name": "Lý Thường Kiệt",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28597",
+      "name": "Tạ Xuân Thu (Chợ Tây Giang)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28601",
+      "name": "Chợ Trại",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28603",
+      "name": "Quang Lịch (chợ Đác)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28610",
+      "name": "579 Lý Bôn",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28624",
+      "name": "Chợ Cao Mại",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28625",
+      "name": "Chợ Tiểu Hoàng",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28693",
+      "name": "Lục Nam (Chợ Lục)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28763",
+      "name": "Lê Quý Đôn",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28899",
+      "name": "Đông Lâm",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28926",
+      "name": "Vũ Thư (Chợ Thẫm)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28936",
+      "name": "An Thái (Chợ Lụ)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "30012",
+      "name": "Tiền Hải",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "31273",
+      "name": "Nguyễn Tông Quai",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "31398",
+      "name": "Đồng Xâm",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "31427",
+      "name": "Đông Hoàng",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "31558",
+      "name": "Thái Phúc",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "31643",
+      "name": "Thái Hòa",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "34687",
+      "name": "Nam Hồng",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "34892",
+      "name": "Đông Minh (mở 23/10)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "35724",
+      "name": "Vũ Quý",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "35772",
+      "name": "Nam Cường (mở 02/10)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "35924",
+      "name": "Bình An (mở 02/10)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "35936",
+      "name": "Vạn Xuân (mở 29/10)",
+      "qltp": "Thế Cường"
+    },
+    {
+      "code": "28126",
+      "name": "Bình Minh",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28127",
+      "name": "Lưu Phương",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28134",
+      "name": "Ngọc Lâm",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28135",
+      "name": "Chợ Ninh",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28189",
+      "name": "Kim Mỹ",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28200",
+      "name": "Quy Hậu",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28207",
+      "name": "Yên Mô (Chợ Ngò)",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28236",
+      "name": "Nghĩa Hưng",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28243",
+      "name": "Rạng Đông",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28244",
+      "name": "Quỹ Nhất",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28458",
+      "name": "Ngã Ba Lồng",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28569",
+      "name": "Khánh Hội",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28575",
+      "name": "Hải Xuân",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28713",
+      "name": "Hải Hoà",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28848",
+      "name": "Khánh Thiện (Chợ Xanh)",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28889",
+      "name": "Lai Thành",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "28894",
+      "name": "Đông Bình",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "29964",
+      "name": "Chợ Năm Dân",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "30021",
+      "name": "Triệu Việt Vương",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "34970",
+      "name": "Ninh Cường",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "36294",
+      "name": "Hải Phong (mở 14/10)",
+      "qltp": "Trường Duy"
+    },
+    {
+      "code": "29988",
+      "name": "Thanh Quang (Chợ Rồng)",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "30060",
+      "name": "Hợp Tiến (chợ La Đôi)",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "30230",
+      "name": "Phúc Lâm",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "30971",
+      "name": "Phả Lại",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "31021",
+      "name": "Hiệp Sơn",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "31134",
+      "name": "Chợ Sỏi",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "31218",
+      "name": "Nam Sách (mở 03/10)",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "31314",
+      "name": "An Đông",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "31345",
+      "name": "Lai Khê",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "31610",
+      "name": "Chợ Trại Rổ",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "31612",
+      "name": "Sao Đỏ",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "34652",
+      "name": "Trần Hưng Đạo",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "34828",
+      "name": "Nguyễn Thái Học",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "34939",
+      "name": "Phú Thái",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "35904",
+      "name": "Thanh Hà (mở 10/10)",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "36004",
+      "name": "Mặc Toàn (mở 16/10)",
+      "qltp": "Tùng Lâm"
+    },
+    {
+      "code": "30054",
+      "name": "Cửa Ông",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "30267",
+      "name": "Cẩm Bình",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "30804",
+      "name": "Cẩm Thuỷ",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "30937",
+      "name": "Cẩm Đông",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "31125",
+      "name": "8A Cẩm Phú",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "31448",
+      "name": "Cái Rồng",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "31451",
+      "name": "Đông Xá",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "31512",
+      "name": "Quang Hanh",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "31514",
+      "name": "Cao Sơn",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "34927",
+      "name": "Cẩm Thạch",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "35523",
+      "name": "Mông Dương",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "35526",
+      "name": "Tô Hiệu",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "35769",
+      "name": "Cửa Ông 4 (mở 02/10)",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "35971",
+      "name": "Cẩm Phả (mở 09/10)",
+      "qltp": "Văn Hải"
+    },
+    {
+      "code": "28229",
+      "name": "Điện Biên",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28245",
+      "name": "Thị trấn Gôi",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28296",
+      "name": "68 Hàn Thuyên",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28297",
+      "name": "101-103 Phạm Ngũ Lão",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28298",
+      "name": "Hiển Khánh",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28299",
+      "name": "Nam Trực",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28300",
+      "name": "46 Lê Hồng Phong",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28570",
+      "name": "Liên Minh",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28620",
+      "name": "276 Trần Thánh Tông",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28688",
+      "name": "Vũ Dương (Chợ Mụa)",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28721",
+      "name": "Nam Minh (Chợ Viềng)",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "28799",
+      "name": "Hòa Hậu",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "30452",
+      "name": "Giải Phóng",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "30779",
+      "name": "81 Trần Thái Tông",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "31035",
+      "name": "80 Giải Phóng",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "31529",
+      "name": "109 Vũ Hữu Lợi",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "31626",
+      "name": "65 - 67 Văn Cao",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "34729",
+      "name": "Nam Vân",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "34797",
+      "name": "Trần Huy Liệu",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "35676",
+      "name": "55 Phù Long",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "35912",
+      "name": "Mỹ Xá (mở 11/10)",
+      "qltp": "Văn Sơn"
+    },
+    {
+      "code": "30231",
+      "name": "Chợ Hạ Long",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "30391",
+      "name": "Khu 7",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "30443",
+      "name": "Hà Tu",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "30957",
+      "name": "Lê Thanh Nghị",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "31221",
+      "name": "Cao Xanh",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "31264",
+      "name": "Hà Lầm",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "31505",
+      "name": "TĐC Hồng Hải",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "31622",
+      "name": "Hà Khẩu",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "34867",
+      "name": "Ba Lan",
+      "qltp": "Văn Đảm"
+    },
+    {
+      "code": "36058",
+      "name": "Trần Hưng Đạo 3 (mở 09/10)",
+      "qltp": "Văn Đảm"
+    }
+  ]
+}

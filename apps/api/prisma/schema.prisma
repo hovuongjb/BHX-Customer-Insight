@@ -1,0 +1,385 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  REGION_MANAGER
+  SHOP_MANAGER
+  STAFF
+}
+
+enum SessionSource {
+  QR
+  STAFF
+}
+
+enum SessionStatus {
+  IN_PROGRESS
+  COMPLETED
+  ABANDONED
+}
+
+enum GroupQuestionKey {
+  Q1
+  Q2
+}
+
+enum QuestionKey {
+  Q1
+  Q2
+  Q3
+  Q4A
+  Q4B
+  Q4C
+  Q4D
+  Q4E
+}
+
+enum FactorKey {
+  PRICE
+  PROMOTION
+  BRAND
+  PACKAGE_SIZE
+  PRODUCT_TYPE
+  OTHER
+  NONE
+}
+
+enum DetailType {
+  PRICE
+  PROMOTION
+  BRAND
+  PACKAGE_SIZE
+  PRODUCT_TYPE
+}
+
+enum ActionPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum ActionStatus {
+  UNASSESSED
+  REVIEWING
+  APPROVED_PILOT
+  PILOTING
+  DEPLOYED
+  NOT_DEPLOYED
+}
+
+model Region {
+  id         String   @id @default(uuid())
+  code       String   @unique
+  name       String
+  createdAt  DateTime @default(now())
+
+  shops       Shop[]
+  users       User[]
+  actionItems ActionItem[]
+}
+
+model Shop {
+  id         String   @id @default(uuid())
+  code       String   @unique
+  name       String
+  regionId   String
+  address    String?
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+
+  region      Region          @relation(fields: [regionId], references: [id])
+  users       User[]
+  qrCodes     ShopQrCode[]
+  sessions    SurveySession[]
+  actionItems ActionItem[]
+
+  @@index([regionId])
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  fullName     String
+  role         Role
+  regionId     String?
+  shopId       String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  region                 Region?                @relation(fields: [regionId], references: [id])
+  shop                   Shop?                  @relation(fields: [shopId], references: [id])
+  createdQrCodes         ShopQrCode[]           @relation("QrCreatedBy")
+  staffSessions          SurveySession[]        @relation("StaffSessions")
+  createdCampaigns       SurveyCampaign[]
+  createdQuestionConfigs SurveyQuestionConfig[]
+  updatedActionItems     ActionItem[]
+  auditLogs              AuditLog[]
+
+  @@index([regionId])
+  @@index([shopId])
+}
+
+model SurveyCampaign {
+  id          String    @id @default(uuid())
+  name        String
+  startDate   DateTime
+  endDate     DateTime?
+  isActive    Boolean   @default(true)
+  createdById String
+  createdAt   DateTime  @default(now())
+
+  createdBy User            @relation(fields: [createdById], references: [id])
+  sessions  SurveySession[]
+}
+
+model ShopQrCode {
+  id          String    @id @default(uuid())
+  shopId      String
+  token       String    @unique
+  isActive    Boolean   @default(true)
+  createdById String
+  createdAt   DateTime  @default(now())
+  revokedAt   DateTime?
+
+  shop      Shop @relation(fields: [shopId], references: [id])
+  createdBy User @relation("QrCreatedBy", fields: [createdById], references: [id])
+
+  @@index([shopId, isActive])
+}
+
+model ProductGroup {
+  id           String @id @default(uuid())
+  code         String @unique
+  name         String
+  displayOrder Int
+
+  brands        Brand[]
+  packageSizes  PackageSize[]
+  productTypes  ProductType[]
+  groupChoices  SurveyGroupChoice[]
+  changeFactors SurveyChangeFactor[]
+  detailChoices SurveyDetailChoice[]
+  actionItems   ActionItem[]
+}
+
+model Brand {
+  id             String  @id @default(uuid())
+  productGroupId String
+  name           String
+  displayOrder   Int
+  isActive       Boolean @default(true)
+
+  productGroup  ProductGroup         @relation(fields: [productGroupId], references: [id])
+  detailChoices SurveyDetailChoice[]
+
+  @@index([productGroupId])
+}
+
+model PackageSize {
+  id             String  @id @default(uuid())
+  productGroupId String
+  label          String
+  displayOrder   Int
+  isActive       Boolean @default(true)
+
+  productGroup  ProductGroup         @relation(fields: [productGroupId], references: [id])
+  detailChoices SurveyDetailChoice[]
+
+  @@index([productGroupId])
+}
+
+model ProductType {
+  id             String  @id @default(uuid())
+  productGroupId String
+  name           String
+  displayOrder   Int
+  isActive       Boolean @default(true)
+
+  productGroup  ProductGroup         @relation(fields: [productGroupId], references: [id])
+  detailChoices SurveyDetailChoice[]
+
+  @@index([productGroupId])
+}
+
+model SurveyQuestionConfig {
+  id            String      @id @default(uuid())
+  questionKey   QuestionKey
+  version       Int
+  labelText     String
+  isActive      Boolean     @default(true)
+  effectiveFrom DateTime    @default(now())
+  createdById   String
+  createdAt     DateTime    @default(now())
+
+  createdBy User                  @relation(fields: [createdById], references: [id])
+  options   SurveyOptionConfig[]
+
+  @@unique([questionKey, version])
+}
+
+model SurveyOptionConfig {
+  id                String  @id @default(uuid())
+  questionConfigId  String
+  optionKey         String
+  labelText         String
+  displayOrder      Int
+  isExclusive       Boolean @default(false)
+  isActive          Boolean @default(true)
+
+  questionConfig SurveyQuestionConfig @relation(fields: [questionConfigId], references: [id])
+
+  @@index([questionConfigId])
+}
+
+model SurveyRespondent {
+  id                 String   @id @default(uuid())
+  fullName           String?
+  phoneNormalizedHash String?
+  phoneLast4         String?
+  createdAt          DateTime @default(now())
+
+  consents PrivacyConsent[]
+  sessions SurveySession[]
+
+  @@index([phoneNormalizedHash])
+}
+
+model PrivacyConsent {
+  id                  String   @id @default(uuid())
+  respondentId         String
+  consentGiven         Boolean
+  consentTextVersion   String
+  consentedAt          DateTime @default(now())
+
+  respondent SurveyRespondent @relation(fields: [respondentId], references: [id])
+}
+
+model SurveySession {
+  id                      String        @id @default(uuid())
+  shopId                  String
+  campaignId              String?
+  source                  SessionSource
+  respondentId            String?
+  staffUserId             String?
+  status                  SessionStatus @default(IN_PROGRESS)
+  isDuplicate             Boolean       @default(false)
+  questionVersionSnapshot Json?
+  giftId                  String?
+  giftNameSnapshot        String?
+  startedAt               DateTime      @default(now())
+  completedAt             DateTime?
+
+  shop          Shop                   @relation(fields: [shopId], references: [id])
+  campaign      SurveyCampaign?        @relation(fields: [campaignId], references: [id])
+  respondent    SurveyRespondent?      @relation(fields: [respondentId], references: [id])
+  staffUser     User?                  @relation("StaffSessions", fields: [staffUserId], references: [id])
+  gift          Gift?                  @relation(fields: [giftId], references: [id])
+  groupChoices  SurveyGroupChoice[]
+  changeFactors SurveyChangeFactor[]
+  detailChoices SurveyDetailChoice[]
+
+  @@index([shopId, campaignId])
+  @@index([respondentId])
+  @@index([status])
+}
+
+model Gift {
+  id             String   @id @default(uuid())
+  name           String
+  packageInfo    String
+  priceVnd       Int
+  note           String?
+  imageUrl       String
+  displayOrder   Int
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+
+  sessions SurveySession[]
+}
+
+model SurveyGroupChoice {
+  id                String           @id @default(uuid())
+  sessionId         String
+  questionKey       GroupQuestionKey
+  productGroupId    String?
+  isExclusiveChoice Boolean          @default(false)
+
+  session      SurveySession @relation(fields: [sessionId], references: [id])
+  productGroup ProductGroup? @relation(fields: [productGroupId], references: [id])
+
+  @@unique([sessionId, questionKey, productGroupId])
+}
+
+model SurveyChangeFactor {
+  id             String    @id @default(uuid())
+  sessionId      String
+  productGroupId String
+  factorKey      FactorKey
+
+  session      SurveySession @relation(fields: [sessionId], references: [id])
+  productGroup ProductGroup  @relation(fields: [productGroupId], references: [id])
+
+  @@unique([sessionId, productGroupId, factorKey])
+}
+
+model SurveyDetailChoice {
+  id             String     @id @default(uuid())
+  sessionId      String
+  productGroupId String
+  detailType     DetailType
+  optionKey      String
+  brandId        String?
+  packageSizeId  String?
+  productTypeId  String?
+  labelSnapshot  String
+
+  session      SurveySession @relation(fields: [sessionId], references: [id])
+  productGroup ProductGroup  @relation(fields: [productGroupId], references: [id])
+  brand        Brand?        @relation(fields: [brandId], references: [id])
+  packageSize  PackageSize?  @relation(fields: [packageSizeId], references: [id])
+  productType  ProductType?  @relation(fields: [productTypeId], references: [id])
+
+  @@index([sessionId])
+  @@index([productGroupId, detailType])
+}
+
+model ActionItem {
+  id             String         @id @default(uuid())
+  regionId       String?
+  shopId         String?
+  productGroupId String
+  factorKey      FactorKey
+  detailSummary  String?
+  requestCount   Int            @default(0)
+  requestRatio   Decimal?       @db.Decimal(5, 2)
+  priority       ActionPriority @default(LOW)
+  status         ActionStatus   @default(UNASSESSED)
+  notes          String?
+  updatedById    String?
+  updatedAt      DateTime       @updatedAt
+
+  region       Region?      @relation(fields: [regionId], references: [id])
+  shop         Shop?        @relation(fields: [shopId], references: [id])
+  productGroup ProductGroup @relation(fields: [productGroupId], references: [id])
+  updatedBy    User?        @relation(fields: [updatedById], references: [id])
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  action     String
+  entityType String
+  entityId   String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+}
